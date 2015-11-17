@@ -12,10 +12,6 @@ var authenticate = function(request, response, callback){
 	var result = false;
 	client.authorize_with_user_key({user_key: params['user_key'],service_id:"2555417729211"},function(resp){
 		if(resp.is_success()){
-			var trans = [{user_key: params['user_key'], "usage": {"hello": 1}}];
-	    client.report(trans, function (response) {
-				console.log(response);
-			});
 			callback(null,resp.is_success());
 		}else{
 			callback(resp.error_message);
